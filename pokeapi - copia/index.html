@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex Kawaii API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- Componente 1 -->
+        <header>
+            <h1>🌸 Pokédex 🌸</h1>
+            <div class="search-container">
+            <input type="text" id="search-input" placeholder="Busca tu Pokémon...">
+            <button id="search-btn">
+                <svg class="search-icon-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M65 65 L90 90" stroke="white" stroke-width="10" stroke-linecap="round" />
+                    
+                    <circle cx="42" cy="42" r="32" stroke="white" stroke-width="7" fill="none" />
+                    
+                    <path d="M25 30 Q 35 20 45 25" stroke="white" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6"/>
+
+                    <g transform="translate(62, 58) rotate(-45)">
+                        <path d="M0 0 C -5 -10, -5 -15, 0 -20 C 5 -15, 5 -10, 0 0" fill="#fff" />
+                        <path d="M0 0 C -8 -5, -12 -8, -10 -15" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" />
+                        <path d="M0 0 C 8 -5, 12 -8, 10 -15" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+        </header>
+            <!-- ------------ -->
+        
+        <!-- Componente 2 -->
+        <div class="pokemon-grid" id="pokedex">
+            <!-- Componente 3 -->
+            <div class="pokemon-card">
+                <div class="card-header">
+                    <span class="number">#025</span>
+                </div>
+                <div class="img-container">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pikachu">
+                </div>
+                <h2 class="name">Pikachu</h2>
+                <div class="types">
+                    <span class="type electric">Eléctrico</span>
+                </div>
+            </div>
+            <!-- ------------ -->
+
+            <div class="pokemon-card shiny">
+                <div class="card-header">
+                    <span class="number">#133</span>
+                    <span class="shiny-icon">✨</span>
+                </div>
+                <div class="img-container">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/133.png" alt="Eevee Shiny">
+                </div>
+                <h2 class="name">Eevee</h2>
+                <div class="types">
+                    <span class="type normal">Normal</span>
+                </div>
+            </div>
+
+            </div>
+            <!-- Componente 4
+            <div id="pokemon-modal" class="modal-overlay">
+        
+         
+
+        <div class="modal-content kawaii-box">
+            <span class="close-btn">&times;</span> <div class="modal-body">
+                <div class="modal-img-container">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="Pokemon" id="modal-img">
+                </div>
+                
+                <h2 id="modal-name">Pikachu</h2>
+                
+                <div class="modal-info">
+                    <p class="description">¡Pika Pika! Aquí aparecerá la descripción de la Pokédex cuando conectemos la API. Es un Pokémon ratón de tipo eléctrico muy adorable.</p>
+                    
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <span class="label">Altura:</span>
+                            <span class="value">0.4m</span>
+                        </div>
+                        <div class="stat-item">
+                             <span class="label">Peso:</span>
+                            <span class="value">6.0kg</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    -->
+    <!-- ------------ -->
+    
+
+        <div class="pagination-container">
+            <button class="page-btn prev">❮</button>
+            
+            <div class="page-numbers">
+                <button class="page-num active">1</button>
+                <button class="page-num">2</button>
+                <button class="page-num">3</button>
+                <button class="page-num">4</button>
+                <button class="page-num">5</button>
+                <button class="page-num">6</button>
+                <button class="page-num">7</button>
+                <button class="page-num">8</button>
+                <button class="page-num">9</button>
+                <button class="page-num">10</button>
+            </div>
+
+            <button class="page-btn next">❯</button>
+        </div>
+    </div>
+    <!-- ------------ -->
+    
+
+</body>
+</html>
