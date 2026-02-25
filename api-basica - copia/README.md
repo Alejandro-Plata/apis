@@ -7,6 +7,20 @@ Sistema de **autenticación profesional** para aprender a implementar:
 - **bcrypt** para seguridad
 - **Tokens** con expiración
 
+---
+
+## 🗺️ ¿Por Dónde Empiezo?
+
+| Tu Situación | Ir a | Tiempo |
+|-------------|------|--------|
+| **Acabo de clonar, quiero setup rápido** | [`INICIO_RAPIDO.md`](INICIO_RAPIDO.md) | 5 min |
+| **Quiero un plan completo de aprendizaje** | [`HOJA_DE_RUTA.md`](HOJA_DE_RUTA.md) | 3-5 h |
+| **Necesito índice de toda la docs** | [`INDICE.md`](INDICE.md) | 5 min |
+| **Tengo un error / algo no funciona** | [`DEBUGGING.md`](DEBUGGING.md) | 10-30 min |
+| **Quiero probar los endpoints** | [`TESTING.md`](TESTING.md) | 30 min |
+
+---
+
 ## 📁 Estructura del Proyecto
 
 ```
