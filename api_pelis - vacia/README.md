@@ -54,7 +54,6 @@ La app se abrirá en `http://localhost:5173`
 3. **Props** - Pasa datos entre componentes
 4. **Eventos** - Conecta formularios y botones
 5. **useEffect** - Ejecuta código cuando componentes se cargan
-6. **useRef** - Controla elementos DOM (avanzado)
 
 ---
 
@@ -110,28 +109,6 @@ export default function Hijo({ peliculas }) { ... }
   <Card key={pelicula.id} item={pelicula} />
 ))}
 ```
-
----
-
-## 🎯 Primer paso: Obtener tu API Key
-
-1. Ve a https://www.themoviedb.org/
-2. Crea una cuenta gratuita
-3. Ve a **Configuración > API** (Settings > API)
-4. Copia tu **API Key (v3 auth)**
-5. Guárdalo en un lugar seguro - ¡lo necesitarás!
-
-**⚠️ Nunca compartas tu API Key en público o en Git**
-
----
-
-## 💡 Notas importantes
-
-- ✅ Los estilos ya están hechos - solo enfócate en lógica
-- ✅ Revisa la consola (F12) cuando algo no funcione
-- ✅ Usa `console.log()` para entender qué datos tienes
-- ✅ Empieza pequeño - haz funcionar la búsqueda primero
-- ✅ Experimenta y juega con el código
 
 ---
 
