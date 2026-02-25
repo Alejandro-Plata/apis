@@ -1,201 +1,148 @@
-# 🎬 Kitty Cinema Club - React Version
+# 🎬 Hello Cinema - Proyecto de Aprendizaje React
 
-A beautiful movie and TV series discovery application powered by TMDB API, built with React and Vite.
+**Aprende React desde cero** construyendo una aplicación real de búsqueda de películas y series.
 
-## 🚀 Quick Start
+---
 
-### Installation
+## 📚 ¿Qué es este proyecto?
+
+Este es un proyecto especialmente diseñado para aprender React mientras construyes algo bonito y funcional. Los estilos y la estructura visual ya están listos, **tú harás la lógica**.
+
+### ✅ Lo que YA está hecho:
+- 🎨 Todos los estilos CSS
+- 🏗️ Estructura de componentes React
+- 🎭 HTML/JSX para la interfaz visual
+
+### ❌ Lo que TÚ harás:
+- 📦 Agregar estado con `useState`
+- 🌐 Hacer fetch a la API de TMDB
+- 🔄 Pasar props entre componentes
+- 🎯 Conectar eventos (onclick, onChange, onSubmit)
+- 🧠 Aprender a pensar como un desarrollador React
+
+---
+
+## 🚀 Empezar
+
+### 1. Instalar dependencias
 
 ```bash
 npm install
 ```
 
-### Development
+### 2. Ejecutar en desarrollo
 
 ```bash
 npm run dev
 ```
 
-The app will open at `http://localhost:5173`
+La app se abrirá en `http://localhost:5173`
 
-### Build
+---
 
-```bash
-npm run build
-```
+## 📖 Rutas de aprendizaje
 
-## 📋 Project Structure
+**Antes de empezar, lee uno de estos archivos:**
+
+📚 **[GUIA_APRENDIZAJE.md](./GUIA_APRENDIZAJE.md)** - Guía paso a paso sobre qué hacer  
+💡 **[EJEMPLOS_CODIGO.md](./EJEMPLOS_CODIGO.md)** - Ejemplos de código para consultar
+
+### Orden recomendado de aprendizaje:
+
+1. **useState** - Aprende a manejar estado
+2. **fetch** - Conecta a la API de TMDB
+3. **Props** - Pasa datos entre componentes
+4. **Eventos** - Conecta formularios y botones
+5. **useEffect** - Ejecuta código cuando componentes se cargan
+6. **useRef** - Controla elementos DOM (avanzado)
+
+---
+
+## 📋 Estructura del Proyecto
 
 ```
 src/
 ├── components/
-│   ├── Header.jsx          # Language toggle & title
-│   ├── Navigation.jsx      # Movies/TV series toggle
-│   ├── SearchFilter.jsx    # Search & rating filter
-│   ├── PolaroidGrid.jsx    # Grid display with lazy loading
-│   ├── PolaroidCard.jsx    # Individual card component
-│   ├── DetailModal.jsx     # Modal dialog for details
-│   └── EpisodesList.jsx    # TV series episodes display
+│   ├── Header.jsx          # Encabezado 
+│   ├── Navigation.jsx      # Botones películas/series
+│   ├── SearchFilter.jsx    # Formulario búsqueda ← EMPIEZA AQUÍ
+│   ├── PolaroidGrid.jsx    # Grilla de películas
+│   ├── PolaroidCard.jsx    # Tarjeta individual
+│   ├── DetailModal.jsx     # Modal de detalles
+│   └── EpisodesList.jsx    # Lista de episodios (extra)
 ├── services/
-│   └── tmdbService.js      # TMDB API integration
-├── hooks/
-│   └── useInfiniteScroll.js # Custom React hooks
-├── App.jsx                 # Main app component with state management
-├── main.jsx                # React entry point
-└── style.css               # Global styles
-
+│   └── tmdbService.js      # Funciones fetch
+├── App.jsx                 # PUNTO PRINCIPAL
+├── main.jsx                # Entrada
+└── style.css               # Estilos (COMPLETO)
 ```
 
-## 🔧 Configuration
+---
 
-### API Key Setup
+## 🔑 Conceptos principales
 
-1. Get your TMDB API key from [themoviedb.org](https://www.themoviedb.org/settings/api)
-2. The API key is already configured in `src/services/tmdbService.js`
-3. Or create a `.env.local` file (copy from `.env.example`):
-
-```env
-VITE_TMDB_API_KEY=your_api_key_here
-```
-
-## 📝 Implementation Checklist
-
-### ✅ Completed
-- [x] React + Vite setup
-- [x] Component structure created
-- [x] CSS styling configured
-- [x] TMDB service functions scaffolded
-- [x] Custom hooks prepared
-- [x] Project builds without errors
-
-### 📋 TODO - Core Implementation
-
-#### 1. **App.jsx State Management**
-Use existing vanilla JS logic to implement:
+### 1. useState - Manejo de estado
 ```javascript
-// TODO in App.jsx
-- loadContent()          // Load initial popular content
-- loadMoreContent()      // Implement lazy loading
-- loadFilteredContent()  // Load filtered content
-- performSearch()        // Search functionality
+const [peliculas, setPeliculas] = useState([]);
+// peliculas = la variable
+// setPeliculas = función para actualizar
+// [] = valor inicial
 ```
 
-#### 2. **TMDB Service Integration** (`src/services/tmdbService.js`)
-All function signatures are ready. You need to:
-- Uncomment the return statements in each function
-- The functions already handle API key and language parameters
-- Rating conversion (0-5 to 0-10) is already implemented
-
-#### 3. **App.jsx Event Handlers**
-Implement the TODO callback functions:
+### 2. fetch - Llamadas a API
 ```javascript
-handleTypeChange()          // Reset and load new content type
-handleLanguageChange()      // Reload content with new language
-handleSearch()              // Trigger search with query
-handleFilterChange()        // Apply rating filter
-handleCardClick()           // Open modal with item
-handleLoadMore()            // Lazy loading pagination
+const respuesta = await fetch(url);
+const datos = await respuesta.json();
 ```
 
-#### 4. **State Flow**
-Reference the vanilla JS version for logic:
-- Track: `contentType`, `language`, `currentPage`, `isLoading`
-- Track: `searchQuery`, `isSearching`, `filterRating`
-- Handle conditional endpoint selection based on state
+### 3. Props - Pasar datos
+```jsx
+// En el padre
+<Hijo peliculas={peliculas} />
 
-### 🔗 API Endpoints Reference
+// En el hijo
+export default function Hijo({ peliculas }) { ... }
+```
 
-From vanilla JS implementation:
-- Popular: `/movie/popular` or `/tv/popular`
-- Search: `/search/movie` or `/search/tv` with `query` param
-- Discover (filter): `/discover/movie` or `/discover/tv` with `vote_average.gte` param
-- Details: `/movie/{id}` or `/tv/{id}` with `append_to_response=videos,season/1`
-
-### 🎨 Feature Implementation Order
-
-1. **Basic Loading** → Load popular movies on mount
-2. **Navigation** → Switch between movies/series
-3. **Search** → Implement search functionality
-4. **Filtering** → Add rating filter with API call
-5. **Lazy Loading** → Implement Intersection Observer pagination
-6. **Modal** → Load and display item details
-7. **Language** → Add language switching with content reload
-8. **Episodes** → Load TV series episodes
-
-## 📚 Code References
-
-### From Vanilla JS Implementation
-The original `api_peliculas/index.js` contains:
-- Complete API integration logic
-- Lazy loading implementation
-- Search and filter handlers
-- Modal management
-- Rating color mapping
-
-**Migration Strategy:**
-1. Copy logic patterns from vanilla JS
-2. Adapt state management to React hooks
-3. Convert event listeners to onClick handlers
-4. Replace DOM manipulation with state updates
-
-### Key Patterns to Migrate
-
+### 4. .map() - Renderizar listas
 ```javascript
-// Vanilla JS pattern
-if (isSearching && searchQuery) {
-  endpoint = '/search/movie';
-  params = { query: searchQuery, page };
-} else if (filterRating) {
-  endpoint = '/discover/movie';
-  params = { 'vote_average.gte': filterRating * 2, 'sort_by': 'vote_average.asc' };
-} else {
-  endpoint = '/movie/popular';
-  params = { page };
-}
-
-// React pattern in App.jsx useCallback or useEffect
+{peliculas.map((pelicula) => (
+  <Card key={pelicula.id} item={pelicula} />
+))}
 ```
 
-## 🚀 Getting Started
+---
 
-1. **Start development server**
-   ```bash
-   npm run dev
-   ```
+## 🎯 Primer paso: Obtener tu API Key
 
-2. **Implement handleTypeChange** in App.jsx
-   - Reset items array
-   - Call loadContent()
+1. Ve a https://www.themoviedb.org/
+2. Crea una cuenta gratuita
+3. Ve a **Configuración > API** (Settings > API)
+4. Copia tu **API Key (v3 auth)**
+5. Guárdalo en un lugar seguro - ¡lo necesitarás!
 
-3. **Implement loadContent** - load popular movies/series
-4. **Continue with features following the checklist**
+**⚠️ Nunca compartas tu API Key en público o en Git**
 
-## 📱 Available Components & Hooks
+---
 
-### Components Ready to Use
-- `<Header />` - Language toggle
-- `<Navigation />` - Content type toggle
-- `<SearchFilter />` - Search and filter inputs
-- `<PolaroidGrid />` - Item grid with lazy loading
-- `<PolaroidCard />` - Individual item card
-- `<DetailModal />` - Item details dialog
-- `<EpisodesList />` - TV episode listing
+## 💡 Notas importantes
 
-### Hooks Available
-- `useInfiniteScroll()` - Lazy loading with Intersection Observer
-- `useModalKeyboard()` - Close modal with Escape key
+- ✅ Los estilos ya están hechos - solo enfócate en lógica
+- ✅ Revisa la consola (F12) cuando algo no funcione
+- ✅ Usa `console.log()` para entender qué datos tienes
+- ✅ Empieza pequeño - haz funcionar la búsqueda primero
+- ✅ Experimenta y juega con el código
 
-## 🛠️ Dependencies
+---
 
-- React 18.2.0
-- Axios 1.6.2
-- Vite 5.0.8
+## 📚 Resources útiles
 
-## 📖 Full Implementation Guide
+- **TMDB API**: https://developer.themoviedb.org/docs
+- **React Docs**: https://react.dev
+- **useState Hook**: https://react.dev/reference/react/useState
+- **useEffect Hook**: https://react.dev/reference/react/useEffect
+- **fetch API**: https://developer.mozilla.org/es/docs/Web/API/Fetch_API
 
-See `../GUIA_REACT_IMPLEMENTATION.md` for:
-- Complete requirements breakdown
-- Component API specifications
-- State management details
-- Implementation pistas (hints)
-- Common issues and solutions
+---
+
+**¡A aprender se ha dicho!** 🚀 Revisa [GUIA_APRENDIZAJE.md](./GUIA_APRENDIZAJE.md) para empezar.
