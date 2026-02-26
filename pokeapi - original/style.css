@@ -207,9 +207,8 @@ h1 {
     backdrop-filter: blur(5px); /* Efecto borroso en el fondo */
     z-index: 2000; /* Por encima de TODO, incluso la paginación */
     
-    /* PARA ENSEÑAR EL DISEÑO: déjalo en 'flex'. 
-       CUANDO USÉIS JS: cambiadlo a 'display: none;' para que no se vea al inicio */
-    display: flex; 
+    /* Modal oculta por defecto - se abre con JavaScript */
+    display: none; 
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -234,16 +233,32 @@ h1 {
     position: absolute;
     top: 15px;
     right: 20px;
-    color: var(--secondary-pink);
-    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(to bottom right, var(--secondary-pink), var(--primary-pink));
+    border: 3px solid var(--primary-pink);
+    border-radius: 50%;
+    color: white;
+    font-size: 26px;
     font-weight: bold;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(255, 158, 181, 0.4);
+    padding: 0;
 }
 
 .close-btn:hover {
-    color: var(--primary-pink);
+    background: linear-gradient(to bottom right, var(--primary-pink), #ff7fa0);
+    transform: scale(1.15) rotate(90deg);
+    box-shadow: 0 6px 18px rgba(255, 158, 181, 0.6);
+}
+
+.close-btn:active {
+    transform: scale(0.95);
 }
 
 /* Estilos del contenido de la modal */
