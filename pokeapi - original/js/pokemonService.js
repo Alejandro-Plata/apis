@@ -126,3 +126,37 @@ function getTypeColor(type) {
 function formatPokemonNumber(num) {
     return '#' + String(num).padStart(3, '0');
 }
+
+/**
+ * Busca un pokémon por nombre o ID
+ * @param {string} query - Nombre o ID del pokémon
+ * @returns {Promise<Object>} - Pokémon formateado
+ */
+async function fetchPokemonByName(query) {
+    try {
+        const url = `${API_URL}/${query.toLowerCase().trim()}`;
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Error ${response.status}`);
+
+        const poke = await response.json();
+        const isShinyPokemon = isShiny();
+
+        const shinyImage = poke.sprites.other['official-artwork'].front_shiny;
+        const normalImage = poke.sprites.other['official-artwork'].front_default || poke.sprites.front_default;
+        const image = (isShinyPokemon && shinyImage) ? shinyImage : normalImage;
+
+        return {
+            id: poke.id,
+            name: poke.name.charAt(0).toUpperCase() + poke.name.slice(1),
+            types: poke.types.map(t => t.type.name),
+            image: image,
+            height: poke.height / 10,
+            weight: poke.weight / 10,
+            description: getDefaultDescription(poke.name),
+            isShiny: isShinyPokemon
+        };
+    } catch (error) {
+        console.error('Error buscando pokémon:', error);
+        throw error;
+    }
+}

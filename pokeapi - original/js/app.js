@@ -21,6 +21,9 @@ const modal = document.getElementById('pokemon-modal');
 const closeBtn = document.querySelector('.close-btn');
 const prevBtn = document.querySelector('.page-btn.prev');
 const nextBtn = document.querySelector('.page-btn.next');
+const searchInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('search-btn');
+const paginationContainer = document.querySelector('.pagination-container');
 
 /**
  * Inicializa la aplicación
@@ -39,10 +42,16 @@ function setupEventListeners() {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
     });
-    
+
     // Paginación
     prevBtn.addEventListener('click', handlePrevPage);
     nextBtn.addEventListener('click', handleNextPage);
+
+    // Buscador
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') searchPokemon();
+    });
+    searchBtn.addEventListener('click', searchPokemon);
 }
 
 /**
@@ -52,16 +61,16 @@ async function loadPage(pageNumber) {
     try {
         state.isLoading = true;
         showLoadingState();
-        
+
         const data = await fetchPokemonPage(pageNumber);
-        
+
         state.currentPage = pageNumber;
         state.currentPokemon = data.pokemon;
         state.totalPages = data.totalPages;
-        
+
         renderPokemon();
         updatePagination();
-        
+
         state.isLoading = false;
     } catch (error) {
         console.error('Error loading page:', error);
@@ -87,12 +96,12 @@ function showLoadingState() {
  */
 function renderPokemon() {
     pokedex.innerHTML = '';
-    
+
     if (state.currentPokemon.length === 0) {
         pokedex.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No hay pokémon</p>';
         return;
     }
-    
+
     state.currentPokemon.forEach(pokemon => {
         const card = createPokemonCard(pokemon);
         pokedex.appendChild(card);
@@ -105,10 +114,10 @@ function renderPokemon() {
 function createPokemonCard(pokemon) {
     const card = document.createElement('div');
     card.className = 'pokemon-card' + (pokemon.isShiny ? ' shiny' : '');
-    
+
     // Validar que la imagen exista
     const image = pokemon.image || 'https://via.placeholder.com/150?text=No+Image';
-    
+
     card.innerHTML = `
         <div class="card-header">
             <span class="number">${formatPokemonNumber(pokemon.id)}</span>
@@ -124,7 +133,7 @@ function createPokemonCard(pokemon) {
             `).join('')}
         </div>
     `;
-    
+
     card.addEventListener('click', () => openModal(pokemon));
     return card;
 }
@@ -134,16 +143,16 @@ function createPokemonCard(pokemon) {
  */
 function openModal(pokemon) {
     state.selectedPokemon = pokemon;
-    
+
     const image = pokemon.image || 'https://via.placeholder.com/300?text=No+Image';
-    
+
     document.getElementById('modal-img').src = image;
     document.getElementById('modal-img').alt = pokemon.name;
     document.getElementById('modal-name').textContent = pokemon.name;
     document.getElementById('modal-description').textContent = pokemon.description;
     document.getElementById('modal-height').textContent = pokemon.height.toFixed(1) + 'm';
     document.getElementById('modal-weight').textContent = pokemon.weight.toFixed(1) + 'kg';
-    
+
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
@@ -163,15 +172,15 @@ function updatePagination() {
     // Mostrar/ocultar botones
     prevBtn.style.display = state.currentPage === 1 ? 'none' : 'block';
     nextBtn.style.display = state.currentPage === state.totalPages ? 'none' : 'block';
-    
+
     // Actualizar números de página
     const pageContainer = document.querySelector('.page-numbers');
     pageContainer.innerHTML = '';
-    
+
     // Mostrar máximo 10 botones
     let startPage = Math.max(1, state.currentPage - 4);
     let endPage = Math.min(state.totalPages, state.currentPage + 5);
-    
+
     for (let i = startPage; i <= endPage; i++) {
         const btn = document.createElement('button');
         btn.className = `page-num ${i === state.currentPage ? 'active' : ''}`;
@@ -200,6 +209,57 @@ function handlePrevPage() {
 function handleNextPage() {
     if (state.currentPage < state.totalPages && !state.isLoading) {
         loadPage(state.currentPage + 1);
+    }
+}
+
+/**
+ * Busca un pokémon por nombre o ID desde el input
+ */
+async function searchPokemon() {
+    const query = searchInput.value.trim();
+    if (!query || state.isLoading) return;
+
+    try {
+        state.isLoading = true;
+        showLoadingState();
+        paginationContainer.style.display = 'none';
+
+        const pokemon = await fetchPokemonByName(query);
+
+        state.currentPokemon = [pokemon];
+        renderPokemon();
+
+        // Botón para volver al listado completo
+        const backBtn = document.createElement('button');
+        backBtn.textContent = '← Volver al listado';
+        backBtn.className = 'page-btn';
+        backBtn.style.margin = '20px auto';
+        backBtn.style.display = 'block';
+        backBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            paginationContainer.style.display = '';
+            loadPage(state.currentPage);
+        });
+        pokedex.appendChild(backBtn);
+
+        state.isLoading = false;
+    } catch (error) {
+        pokedex.innerHTML = `<p style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No se encontró el Pokémon "${query}". Intenta con otro nombre o ID.</p>`;
+        paginationContainer.style.display = 'none';
+
+        const backBtn = document.createElement('button');
+        backBtn.textContent = '← Volver al listado';
+        backBtn.className = 'page-btn';
+        backBtn.style.margin = '20px auto';
+        backBtn.style.display = 'block';
+        backBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            paginationContainer.style.display = '';
+            loadPage(state.currentPage);
+        });
+        pokedex.appendChild(backBtn);
+
+        state.isLoading = false;
     }
 }
 
