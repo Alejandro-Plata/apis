@@ -1,6 +1,78 @@
 # 🎮 Pokédex Kawaii - Guía de Inicio
 
-¡Bienvenida al proyecto para aprender **React desde cero**!
+¡Bienvenida al proyecto para aprender **React desde cero** y dominar **APIs, Query Params y Autenticación**!
+
+---
+
+## 🔧 Configuración Inicial del Repositorio
+
+### Opción A: Clonar el repositorio de GitHub (Recomendado)
+
+Si tienes acceso al repositorio remoto:
+
+```bash
+# 1. Clonar el repositorio completo
+git clone <url-del-repositorio> mi-workspace
+cd mi-workspace
+
+# 2. Ver todos los proyectos disponibles
+ls -la
+
+# 3. Actualizar el repositorio regularmente
+git pull  # Descargar últimos cambios
+```
+
+---
+
+### Opción B: Crear un repositorio local desde cero
+
+Si prefieres trabajar localmente sin GitHub:
+
+```bash
+# 1. Inicializar repositorio git
+git init
+
+# 2. Agregar archivos
+git add .
+
+# 3. Hacer primer commit
+git commit -m "Repositorio inicial"
+
+# 4. (Opcional) Conectar con GitHub
+git remote add origin <url-del-repositorio>
+git branch -M main
+git push -u origin main
+```
+
+---
+
+### Opción C: Copiar y organizar proyectos manualmente
+
+Si prefieres trabajar sin git:
+
+```bash
+mkdir fase1-react-pokeapi
+mkdir fase2-query-params-peliculas
+mkdir fase3-autenticacion
+
+cp -r pokeapi/* ./fase1-react-pokeapi/
+cp -r api_pelis/* ./fase2-query-params-peliculas/
+cp -r api-basica/* ./fase3-autenticacion/
+```
+
+---
+
+### Mantener el repositorio actualizado
+
+```bash
+git status      # Ver cambios
+git pull        # Descargar últimos cambios
+git add .
+git commit -m "Descripción"
+git push        # Enviar cambios
+```
+
+---
 
 ## 🚀 Dos Carpetas Principales
 
@@ -179,6 +251,86 @@ function Card({ name }) {
 // Hook (lógica reutilizable)
 const { pokemon } = usePokeAPI();
 ```
+
+---
+
+## 🚀 Ruta de Aprendizaje Completa
+
+Una vez completes pokeapi, aquí está la ruta recomendada paso a paso:
+
+### 📍 Fase 1: React + Componentes (Actual)
+
+**Proyecto:** `pokeapi/` o `pokeapi - vacio/`
+
+**Conceptos:** React, props, estado, hooks, APIs
+
+**Tiempo:** 2-4 horas
+
+---
+
+### 📍 Fase 2: Query Parameters Avanzados
+
+**Proyecto:** `api_pelis/` o `api_pelis - vacia/`
+
+**Conceptos:** Query params complejos, filtros, debounce, manejo de errores
+
+**Documentación:**
+- [README.md](./api_pelis/README.md) - Overview
+- [GUIA_REACT.md](./api_pelis/GUIA_REACT.md) - Componentes
+- [IMPLEMENTATION_LOG.md](./api_pelis/IMPLEMENTATION_LOG.md) - Cambios
+
+**Tiempo:** 3-4 horas
+
+---
+
+### 📍 Fase 3: Backend con Autenticación JWT
+
+**Proyecto:** `api-basica - vacia/`
+
+**Conceptos:** Bcrypt, JWT, middleware, validaciones, CRUD
+
+**Documentación:**
+- [HOJA_DE_RUTA.md](./api-basica%20-%20vacia/HOJA_DE_RUTA.md) - Guía completa
+- [README.md](./api-basica%20-%20vacia/README.md) - Conceptos
+- [BCRYPT_GUIDE.md](./api-basica%20-%20vacia/BCRYPT_GUIDE.md) - Hashing
+- [JWT_GUIDE.md](./api-basica%20-%20vacia/JWT_GUIDE.md) - Tokens
+- [SEQUELIZE_GUIDE.md](./api-basica%20-%20vacia/SEQUELIZE_GUIDE.md) - Base de datos
+- [TESTING.md](./api-basica%20-%20vacia/TESTING.md) - Pruebas
+- [DEBUGGING.md](./api-basica%20-%20vacia/DEBUGGING.md) - Troubleshooting
+
+**Tiempo:** 3-5 horas
+
+---
+
+### 📍 Próximos Pasos
+
+- Integración Frontend-Backend
+- Refresh tokens y logout
+- 2FA y recuperación de contraseña
+- Blog API, Chat, Tienda online
+- Deploy y DevOps
+
+---
+
+## ⏱️ Tiempo Total Estimado
+
+- **Fase 1 (React):** 2-4 horas
+- **Fase 2 (Query Params):** 3-4 horas
+- **Fase 3 (Autenticación):** 3-5 horas
+- **Integración + Extras:** 2-4 horas
+
+**Total: 10-17 horas**
+
+---
+
+## 📚 Recursos
+
+- React: https://react.dev
+- Express.js: https://expressjs.com
+- JWT: https://jwt.io
+- Sequelize: https://sequelize.org
+- PokeAPI: https://pokeapi.co
+- TMDB API: https://www.themoviedb.org/settings/api
 
 ---
 
