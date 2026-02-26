@@ -393,3 +393,31 @@ h1 {
 #search-btn:active {
     transform: scale(0.9);
 }
+
+/* --- Botón "Volver al listado" --- */
+.back-btn {
+    display: block;
+    margin: 25px auto;
+    padding: 12px 30px;
+    background: linear-gradient(to right, var(--secondary-pink), var(--primary-pink));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 158, 181, 0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 158, 181, 0.6);
+    background: linear-gradient(to right, var(--primary-pink), #ff7fa0);
+}
+
+.back-btn:active {
+    transform: scale(0.95);
+}

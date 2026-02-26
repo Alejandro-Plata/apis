@@ -1,17 +1,18 @@
 /* --- Variables Kawaii --- */
 :root {
-    --bg-color: #ffe6ea;      
-    --card-bg: #ffffff;       /* Ya no usaremos este solo */
+    --bg-color: #ffe6ea;
+    --card-bg: #ffffff;
+    /* Ya no usaremos este solo */
     /* NUEVO: Un degradado sutil de blanco a rosita muy pálido */
-    --card-bg-kawaii: linear-gradient(to bottom right, #ffffff 30%, #fff5f8 100%); 
+    --card-bg-kawaii: linear-gradient(to bottom right, #ffffff 30%, #fff5f8 100%);
     /* NUEVO: Color del borde de la carta en reposo */
-    --card-border-base: #ffd1dc; 
-    --primary-pink: #ff9eb5;  
+    --card-border-base: #ffd1dc;
+    --primary-pink: #ff9eb5;
     --secondary-pink: #ffc2d1;
-    --text-color: #6d5b6b;    
+    --text-color: #6d5b6b;
     --gold: #ffd700;
     /* NUEVO: Fondo semitransparente para la modal */
-    --modal-overlay-bg: rgba(109, 91, 107, 0.5); 
+    --modal-overlay-bg: rgba(109, 91, 107, 0.5);
 }
 
 * {
@@ -22,7 +23,8 @@
 
 body {
     background-color: var(--bg-color);
-    font-family: 'Fredoka', sans-serif; /* Fuente redondeada */
+    font-family: 'Fredoka', sans-serif;
+    /* Fuente redondeada */
     color: var(--text-color);
     display: flex;
     justify-content: center;
@@ -33,9 +35,10 @@ body {
     width: 90%;
     max-width: 1200px;
     padding: 20px;
-    padding-bottom: 100px; /* <--- NUEVO: Espacio extra al final para que la paginación no tape nada */
+    padding-bottom: 100px;
+    /* <--- NUEVO: Espacio extra al final para que la paginación no tape nada */
     text-align: center;
-}   
+}
 
 h1 {
     color: var(--primary-pink);
@@ -56,13 +59,15 @@ h1 {
 /* --- Diseño de la Card --- */
 .pokemon-card {
     /* Sustituimos el background-color plano por el degradado */
-    background: var(--card-bg-kawaii); 
-    border-radius: 25px; /* Un poco más redondeado */
+    background: var(--card-bg-kawaii);
+    border-radius: 25px;
+    /* Un poco más redondeado */
     padding: 15px;
-    box-shadow: 0 10px 20px rgba(255, 158, 181, 0.15); /* Sombra un pelín más suave */
+    box-shadow: 0 10px 20px rgba(255, 158, 181, 0.15);
+    /* Sombra un pelín más suave */
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     /* NUEVO: Borde base rosita */
-    border: 3px solid var(--card-border-base); 
+    border: 3px solid var(--card-border-base);
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -72,7 +77,7 @@ h1 {
     transform: translateY(-5px);
     box-shadow: 0 15px 30px rgba(255, 158, 181, 0.4);
     /* Al hacer hover, el borde se vuelve del rosa principal más fuerte */
-    border-color: var(--primary-pink); 
+    border-color: var(--primary-pink);
 }
 
 .card-header {
@@ -97,7 +102,7 @@ h1 {
 .pokemon-card img {
     width: 100%;
     max-width: 100px;
-    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .name {
@@ -119,8 +124,9 @@ h1 {
 
 /* --- ESTILOS SHINY (Especial) --- */
 .pokemon-card.shiny {
-     border: 3px solid var(--gold); /* El dorado sobrescribe el rosa */
-     animation: glow 3s infinite alternate;
+    border: 3px solid var(--gold);
+    /* El dorado sobrescribe el rosa */
+    animation: glow 3s infinite alternate;
 }
 
 .shiny-icon {
@@ -131,54 +137,80 @@ h1 {
 
 /* Animación sutil de brillo para shinies */
 @keyframes glow {
-    from { box-shadow: 0 0 10px #fff, 0 0 20px var(--secondary-pink); }
-    to { box-shadow: 0 0 15px #fff, 0 0 30px var(--primary-pink); }
+    from {
+        box-shadow: 0 0 10px #fff, 0 0 20px var(--secondary-pink);
+    }
+
+    to {
+        box-shadow: 0 0 15px #fff, 0 0 30px var(--primary-pink);
+    }
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.2); }
-    100% { transform: rotate(360deg) scale(1); }
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
 }
 
 /* --- Paginación --- */
 .pagination-container {
-    position: fixed; /* Lo fija a la pantalla */
-    bottom: 20px;    /* A 20px del final */
-    left: 50%;       /* Lo posiciona al 50% del ancho */
-    transform: translateX(-50%); /* Corrige el centrado para que sea exacto */
-    
-    background-color: rgba(255, 255, 255, 0.9); /* Blanco con transparencia */
-    backdrop-filter: blur(10px); /* Efecto borroso/cristal del fondo */
-    
+    position: fixed;
+    /* Lo fija a la pantalla */
+    bottom: 20px;
+    /* A 20px del final */
+    left: 50%;
+    /* Lo posiciona al 50% del ancho */
+    transform: translateX(-50%);
+    /* Corrige el centrado para que sea exacto */
+
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Blanco con transparencia */
+    backdrop-filter: blur(10px);
+    /* Efecto borroso/cristal del fondo */
+
     padding: 10px 25px;
-    border-radius: 50px; /* Forma de píldora */
-    box-shadow: 0 5px 20px rgba(109, 91, 107, 0.2); /* Sombra suave para dar profundidad */
-    
+    border-radius: 50px;
+    /* Forma de píldora */
+    box-shadow: 0 5px 20px rgba(109, 91, 107, 0.2);
+    /* Sombra suave para dar profundidad */
+
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
-    z-index: 1000; /* Asegura que esté por encima de las cartas */
-    border: 2px solid white; /* Borde sutil */
+    z-index: 1000;
+    /* Asegura que esté por encima de las cartas */
+    border: 2px solid white;
+    /* Borde sutil */
 }
 
-.page-btn, .page-num {
+.page-btn,
+.page-num {
     border: none;
     background-color: var(--card-bg);
     color: var(--text-color);
     width: 40px;
     height: 40px;
-    border-radius: 50%; /* Botones redondos */
+    border-radius: 50%;
+    /* Botones redondos */
     font-family: 'Fredoka', sans-serif;
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     transition: all 0.2s ease;
 }
 
-.page-btn:hover, .page-num:hover {
+.page-btn:hover,
+.page-num:hover {
     background-color: var(--secondary-pink);
     color: white;
 }
@@ -203,13 +235,16 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--modal-overlay-bg); /* Fondo semitransparente */
-    backdrop-filter: blur(5px); /* Efecto borroso en el fondo */
-    z-index: 2000; /* Por encima de TODO, incluso la paginación */
-    
+    background-color: var(--modal-overlay-bg);
+    /* Fondo semitransparente */
+    backdrop-filter: blur(5px);
+    /* Efecto borroso en el fondo */
+    z-index: 2000;
+    /* Por encima de TODO, incluso la paginación */
+
     /* PARA ENSEÑAR EL DISEÑO: déjalo en 'flex'. 
        CUANDO USÉIS JS: cambiadlo a 'display: none;' para que no se vea al inicio */
-    display: flex; 
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -222,11 +257,14 @@ h1 {
     border-radius: 35px;
     padding: 30px;
     width: 100%;
-    max-width: 500px; /* Ancho máximo de la ventana */
+    max-width: 500px;
+    /* Ancho máximo de la ventana */
     box-shadow: 0 20px 40px rgba(255, 158, 181, 0.5);
-    position: relative; /* Para poder posicionar la X de cerrar */
+    position: relative;
+    /* Para poder posicionar la X de cerrar */
     text-align: center;
-    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Pequeña animación de rebote al entrar */
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Pequeña animación de rebote al entrar */
 }
 
 /* Botón de cerrar (X) */
@@ -310,8 +348,15 @@ h1 {
 
 /* Animación de entrada "Pop" */
 @keyframes popIn {
-    0% { opacity: 0; transform: scale(0.7); }
-    100% { opacity: 1; transform: scale(1); }
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* --- BUSCADOR KAWAII --- */
@@ -320,7 +365,8 @@ h1 {
     justify-content: center;
     align-items: center;
     gap: 15px;
-    margin-bottom: 40px; /* Separación con las cartas */
+    margin-bottom: 40px;
+    /* Separación con las cartas */
     position: relative;
     z-index: 10;
 }
@@ -328,15 +374,18 @@ h1 {
 /* El campo de texto */
 #search-input {
     width: 100%;
-    max-width: 400px; /* Que no sea eterno en pantallas grandes */
+    max-width: 400px;
+    /* Que no sea eterno en pantallas grandes */
     padding: 15px 25px;
-    border-radius: 50px; /* Bordes totalmente redondos (Pill shape) */
+    border-radius: 50px;
+    /* Bordes totalmente redondos (Pill shape) */
     border: 3px solid var(--card-border-base);
     background-color: white;
     font-family: 'Fredoka', sans-serif;
     font-size: 1.1rem;
     color: var(--text-color);
-    outline: none; /* Quitamos el borde azul feo del navegador */
+    outline: none;
+    /* Quitamos el borde azul feo del navegador */
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(255, 158, 181, 0.1);
 }
@@ -345,7 +394,8 @@ h1 {
 #search-input:focus {
     border-color: var(--primary-pink);
     box-shadow: 0 5px 20px rgba(255, 158, 181, 0.3);
-    transform: scale(1.02); /* Crece un poquito */
+    transform: scale(1.02);
+    /* Crece un poquito */
 }
 
 /* Color del texto de ayuda (placeholder) */
@@ -368,21 +418,23 @@ h1 {
     align-items: center;
     box-shadow: 0 5px 15px rgba(255, 158, 181, 0.4);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    padding: 10px; /* Añadimos padding para que el icono respire */
+    padding: 10px;
+    /* Añadimos padding para que el icono respire */
 }
 
 /* Estilos para nuestro nuevo SVG */
 .search-icon-svg {
     width: 60%;
     height: 60%;
-    filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.1));
+    filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.1));
     transition: transform 0.3s ease;
 }
 
 /* Animación al pasar el ratón por encima */
 #search-btn:hover {
     background-color: var(--secondary-pink);
-    transform: rotate(45deg) scale(1.05); /* Rotación suave */
+    transform: rotate(45deg) scale(1.05);
+    /* Rotación suave */
 }
 
 #search-btn:hover .search-icon-svg {
@@ -393,4 +445,32 @@ h1 {
 /* Efecto Click */
 #search-btn:active {
     transform: scale(0.9);
+}
+
+/* --- Botón "Volver al listado" --- */
+.back-btn {
+    display: block;
+    margin: 25px auto;
+    padding: 12px 30px;
+    background: linear-gradient(to right, var(--secondary-pink), var(--primary-pink));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 158, 181, 0.4);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 158, 181, 0.6);
+    background: linear-gradient(to right, var(--primary-pink), #ff7fa0);
+}
+
+.back-btn:active {
+    transform: scale(0.95);
 }

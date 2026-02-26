@@ -232,9 +232,7 @@ async function searchPokemon() {
         // Botón para volver al listado completo
         const backBtn = document.createElement('button');
         backBtn.textContent = '← Volver al listado';
-        backBtn.className = 'page-btn';
-        backBtn.style.margin = '20px auto';
-        backBtn.style.display = 'block';
+        backBtn.className = 'back-btn';
         backBtn.addEventListener('click', () => {
             searchInput.value = '';
             paginationContainer.style.display = '';
@@ -249,9 +247,7 @@ async function searchPokemon() {
 
         const backBtn = document.createElement('button');
         backBtn.textContent = '← Volver al listado';
-        backBtn.className = 'page-btn';
-        backBtn.style.margin = '20px auto';
-        backBtn.style.display = 'block';
+        backBtn.className = 'back-btn';
         backBtn.addEventListener('click', () => {
             searchInput.value = '';
             paginationContainer.style.display = '';

@@ -97,6 +97,59 @@ cp ../pokeapi\ -\ original/style.css ./src/style.css
 
 Ver: [MIGRATION_GUIDE.md - Fase 3.1](MIGRATION_GUIDE.md#paso-31-crear-servicio-de-api)
 
+> **⚠️ Importante — Manejo de estados de la petición**
+>
+> Cada llamada a la API puede terminar de tres formas distintas. Debes manejarlas **todas**:
+>
+> | Estado | ¿Cuándo ocurre? | ¿Qué mostrar al usuario? |
+> |--------|----------------|--------------------------|
+> | ⏳ **Cargando** | La petición está en vuelo (antes del `await`) | Spinner, animación, mensaje "Cargando..." |
+> | ❌ **Error** | La red falló o la API devolvió un error (`!response.ok`) | Mensaje claro de error + opción de reintentar |
+> | ✅ **Éxito** | Los datos llegaron correctamente | Renderizar los datos |
+>
+> **Ejemplo en el servicio:**
+> ```js
+> async function getPokemonPage(page) {
+>     // El try/catch separa éxito de error
+>     try {
+>         const response = await fetch(url);
+>         if (!response.ok) throw new Error(`Error ${response.status}`); // ❌ Error HTTP
+>         const data = await response.json();
+>         return data; // ✅ Éxito
+>     } catch (error) {
+>         console.error(error);
+>         throw error; // ❌ Propaga el error al hook
+>     }
+> }
+> ```
+>
+> **Ejemplo en el hook (`usePokeAPI.js`):**
+> ```js
+> const [loading, setLoading] = useState(false); // ⏳
+> const [error,   setError]   = useState(null);  // ❌
+> const [pokemon, setPokemon] = useState([]);     // ✅
+>
+> async function loadPage(page) {
+>     setLoading(true);   // ⏳ Empieza a cargar
+>     setError(null);
+>     try {
+>         const data = await getPokemonPage(page);
+>         setPokemon(data.pokemon); // ✅ Éxito
+>     } catch (err) {
+>         setError(err.message);   // ❌ Error
+>     } finally {
+>         setLoading(false); // ⏳ Siempre termina la carga
+>     }
+> }
+> ```
+>
+> **En el JSX, renderiza condicionalmente según el estado:**
+> ```jsx
+> if (loading) return <div className="loading">🌸 Cargando pokémon...</div>;
+> if (error)   return <div className="error">❌ {error}</div>;
+> return <PokemonGrid pokemon={pokemon} />;
+> ```
+
 ---
 
 ### ✅ 4. `src/hooks/usePokeAPI.js` - Custom Hook
