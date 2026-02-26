@@ -2,6 +2,8 @@
 
 > Migración de un proyecto Vanilla JavaScript HTML/CSS a **React 18** con Vite
 
+🔗 **Previsualización del proyecto:** [https://pokedex-sandy-phi.vercel.app/](https://pokedex-sandy-phi.vercel.app/)
+
 ---
 
 ## 🎯 Objetivo

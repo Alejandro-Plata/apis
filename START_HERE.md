@@ -57,6 +57,8 @@ npm install
 npm run dev
 ```
 
+🔗 **Previsualización:** [https://pokedex-sandy-phi.vercel.app/](https://pokedex-sandy-phi.vercel.app/)
+
 **Documentación:**
 - `README.md` - Descripción general del proyecto
 - `GUIA_REACT.md` - Conceptos fundamentales de React
@@ -88,7 +90,7 @@ cd "pokeapi - original"
 ---
 
 ### 📁 `api_pelis/` ← SOLUCIÓN COMPLETA REACT
-**Proyecto React Avanzado** - Ejemplo de una Pokédex React funcional.
+**Proyecto React Avanzado** - Aplicación de películas con API integration.
 
 ```bash
 cd "api_pelis"
@@ -96,10 +98,13 @@ npm install
 npm run dev
 ```
 
+🔗 **Previsualización:** [https://apis-smoky.vercel.app/](https://apis-smoky.vercel.app/)
+
 **Consulta para:**
 - Ver patrones React avanzados
 - Entender infinite scroll
-- Comparar con tu implementación
+- Aplicación con autenticación
+- Consumo real de APIs
 
 ---
 
