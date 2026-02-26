@@ -1,4 +1,4 @@
-# 🎮 Pokédex Kawaii - Guía de Inicio
+# 🎮 Pokédex - Guía de Inicio
 
 ¡Bienvenida al proyecto para aprender **React desde cero** y dominar **APIs, Query Params y Autenticación**!
 
@@ -38,38 +38,10 @@ git add .
 # 3. Hacer primer commit
 git commit -m "Repositorio inicial"
 
-# 4. (Opcional) Conectar con GitHub
+# 4. (Opcional) Conectar con GitHub (tu github)
 git remote add origin <url-del-repositorio>
 git branch -M main
 git push -u origin main
-```
-
----
-
-### Opción C: Copiar y organizar proyectos manualmente
-
-Si prefieres trabajar sin git:
-
-```bash
-mkdir fase1-react-pokeapi
-mkdir fase2-query-params-peliculas
-mkdir fase3-autenticacion
-
-cp -r pokeapi/* ./fase1-react-pokeapi/
-cp -r api_pelis/* ./fase2-query-params-peliculas/
-cp -r api-basica/* ./fase3-autenticacion/
-```
-
----
-
-### Mantener el repositorio actualizado
-
-```bash
-git status      # Ver cambios
-git pull        # Descargar últimos cambios
-git add .
-git commit -m "Descripción"
-git push        # Enviar cambios
 ```
 
 ---
