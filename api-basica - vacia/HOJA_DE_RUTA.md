@@ -7,7 +7,103 @@ Plan estructurado de aprendizaje para dominar autenticación con bcrypt, JWT y S
 
 ---
 
-## 📍 Fase 0: Preparación (15-20 minutos)
+## � Configuración Inicial del Repositorio
+
+### Opción A: Clonar el repositorio de GitHub (Recomendado)
+
+Si tienes acceso al repositorio remoto:
+
+```bash
+# 1. Clonar el repositorio completo
+git clone <url-del-repositorio> mi-workspace
+cd mi-workspace
+
+# 2. Ver todos los proyectos disponibles
+ls -la
+
+# Deberías ver:
+# - api_pelis/
+# - api_pelis - learning/
+# - api_pelis - vacia/
+# - api-basica/
+# - api-basica - vacia/
+# - pokeapi/
+# - etc.
+
+# 3. Actualizar el repositorio regularmente
+git pull  # Descargar últimos cambios
+```
+
+---
+
+### Opción B: Crear un repositorio local desde cero (Si trabajas offline)
+
+Si prefieres trabajar localmente sin GitHub:
+
+```bash
+# 1. Ir a tu carpeta de trabajo
+cd c:\Users\aleja\Desktop\Apis\ (y\ no\ el\ tomate)
+
+# 2. Inicializar repositorio git
+git init
+
+# 3. Agregar archivos
+git add .
+
+# 4. Hacer primer commit
+git commit -m "Repositorio inicial"
+
+# 5. (Opcional) Conectar con GitHub
+git remote add origin <url-del-repositorio>
+git branch -M main
+git push -u origin main
+```
+
+---
+
+### Opción C: Copiar y organizar proyectos manualmente
+
+Si prefieres trabajar sin git:
+
+```bash
+# 1. Ir a tu carpeta de trabajo
+cd c:\Users\aleja\Desktop\Apis\ (y\ no\ el\ tomate)
+
+# 2. Crear carpetas para cada fase de aprendizaje
+mkdir fase1-pokeapi
+mkdir fase2-peliculas
+mkdir fase3-autenticacion
+
+# 3. Copiar proyectos a carpetas correspondientes
+cp -r pokeapi/* fase1-pokeapi/
+cp -r api_pelis/* fase2-peliculas/
+cp -r api-basica/* fase3-autenticacion/
+```
+
+---
+
+### Mantener el repositorio actualizado
+
+Si usas git, es importante actualizar regularmente:
+
+```bash
+# Ver cambios disponibles
+git status
+
+# Descargar cambios del repositorio remoto
+git pull
+
+# Guardar tus cambios locales
+git add .
+git commit -m "Descripción de cambios"
+
+# Enviar tus cambios al repositorio
+git push
+```
+
+---
+
+## �📍 Fase 0: Preparación (15-20 minutos)
 
 ### Paso 1: Clonar/Copiar proyecto
 
@@ -28,7 +124,6 @@ cat .env
 
 **Contenido esperado:**
 ```
-NODE_ENV=development
 PORT=3000
 DATABASE_URL=postgresql://usuario:contraseña@localhost:5432/mi_api
 JWT_SECRET=tu-super-clave-secreta-cambiar-en-produccion
@@ -937,14 +1032,137 @@ Al completar esta ruta, puedes:
 
 ---
 
-## 🚀 Siguiente Proyecto
+## 🚀 Ruta de Aprendizaje Completa
 
-Después de dominar autenticación:
+Ahora que completaste autenticación JWT, aquí está la ruta recomendada para practicar paso a paso:
 
-1. **Blog API** - CRUD posts con autor
-2. **Chat App** - mensajes en tiempo real (Socket.io)
-3. **Tienda Online** - Usuarios, productos, órdenes
-4. **Sistema de Roles** - Admin, moderador, usuario
+---
+
+### 📍 Fase 1: Domina REST APIs con Query Parameters (Si no lo hiciste en pokeapi)
+
+**Proyecto:** [`pokeapi/`](../pokeapi/README.md)
+
+**Conceptos a aprender:**
+- ✅ Peticiones GET a APIs externas
+- ✅ Query parameters (`?limit=10&offset=20`)
+- ✅ Paginación
+- ✅ Manejo de datos en el cliente
+- ✅ Infinite scroll
+
+**Tiempo:** 2-3 horas
+
+**Tareas:**
+1. Entiende cómo funcionan los query params en la API de Pokémon
+2. Implementa filtros con query parameters
+3. Agrega paginación con offset/limit
+4. Crea un sistema de infinite scroll
+
+**Verificación:**
+- [ ] Entiendo qué son query parameters
+- [ ] Puedo filtrar datos con queries
+- [ ] Implementé paginación
+- [ ] El infinite scroll funciona sin errores
+
+---
+
+### 📍 Fase 2: Query Parameters en Aplicación Real (Películas y Series)
+
+**Proyecto:** [`api_pelis/`](../api_pelis/README.md) o [`api_pelis - vacia/`](../api_pelis%20-%20vacia/README.md)
+
+**Conceptos a aprender:**
+- ✅ Query parameters complejos
+- ✅ Filtros combinados (`?genre=action&year=2023&rating=8`)
+- ✅ Búsqueda avanzada
+- ✅ Ordenamiento
+- ✅ Manejo de respuestas grandes
+
+**Documentación:**
+- [README.md](../api_pelis/README.md) - Overview del proyecto
+- [GUIA_REACT.md](../api_pelis/GUIA_REACT.md) - Guía de componentes React
+- [IMPLEMENTATION_LOG.md](../api_pelis/IMPLEMENTATION_LOG.md) - Log de implementación
+
+**Tiempo:** 3-4 horas
+
+**Tareas:**
+1. Entiende cómo la app consulta la TMDB API con query parameters
+2. Agrega nuevos filtros (año, idioma, rating)
+3. Implementa búsqueda por título con debounce
+4. Crea filtros combinados que funcionen juntos
+5. Maneja casos edge (sin resultados, errores de API)
+
+**Verificación:**
+- [ ] Entiendo cómo se construyen queries complejas
+- [ ] Agregué al menos 2 nuevos filtros
+- [ ] La búsqueda funciona sin lag (debounce implementado)
+- [ ] Los filtros se combinan correctamente
+- [ ] Manejo errores de API
+
+---
+
+### 📍 Fase 3: Backend con Autenticación JWT (Ahora es tu turno)
+
+**Proyecto:** Este mismo - `api-basica - vacia/` o `api-basica/` (con soluciones)
+
+**Conceptos a aprender:**
+- ✅ Bcrypt: hashear contraseñas
+- ✅ JWT: generar y validar tokens
+- ✅ Middleware de autenticación
+- ✅ Errores de seguridad comunes
+- ✅ Validaciones en modelos
+- ✅ CRUD con Sequelize
+
+**Documentación:**
+- [README.md](./README.md) - Conceptos de seguridad
+- [BCRYPT_GUIDE.md](./BCRYPT_GUIDE.md) - Guía completa de bcrypt
+- [JWT_GUIDE.md](./JWT_GUIDE.md) - Guía completa de JWT
+- [SEQUELIZE_GUIDE.md](./SEQUELIZE_GUIDE.md) - ORM y base de datos
+- [TESTING.md](./TESTING.md) - Cómo probar endpoints
+- [DEBUGGING.md](./DEBUGGING.md) - Troubleshooting
+
+**Tiempo:** 3-5 horas (Esta hoja de ruta)
+
+**Tareas completadas:**
+- ✅ Entendiste bcrypt, JWT y Sequelize
+- ✅ Revisaste el código existente
+- ✅ Probaste registro, login y rutas protegidas
+- ✅ Agregaste validaciones
+- ✅ (Opcional) Extendiste con email, perfil, etc.
+
+**Verificación:**
+- [ ] Registro crea usuario con contraseña hasheada
+- [ ] Login retorna JWT válido
+- [ ] Rutas protegidas requieren token
+- [ ] Validaciones funcionan correctamente
+- [ ] Errores se manejan apropiadamente
+
+---
+
+### 📍 Próximos Pasos (Después de completar Fase 3)
+
+**Ideas para practicar más:**
+
+1. **Integración Frontend-Backend**
+   - Crea React app que se conecte a este API
+   - Implementa login/registro en frontend
+   - Guarda JWT en localStorage
+
+2. **Extensiones de Seguridad**
+   - Refresh tokens (renovar JWT sin volver a login)
+   - Logout (blacklist de tokens)
+   - 2FA (Two-Factor Authentication)
+   - Recuperación de contraseña por email
+
+3. **Proyectos Integradores**
+   - **Blog API** - CRUD posts con autor autenticado
+   - **Chat App** - Mensajes en tiempo real (Socket.io)
+   - **Tienda Online** - Usuarios, productos, órdenes, pagos
+   - **Red Social** - Posts, comentarios, seguidores
+
+4. **DevOps / Deployment**
+   - Deploy en Heroku o Render
+   - Variables de entorno en producción
+   - HTTPS y CORS
+   - Rate limiting
 
 ---
 
