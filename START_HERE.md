@@ -46,58 +46,96 @@ git push -u origin main
 
 ---
 
-## 🚀 Dos Carpetas Principales
+## 🚀 Proyectos Disponibles
 
-### 📁 `pokeapi - vacio/` ← EMPIEZA AQUÍ
-**Tu proyecto para completar** con 8 tareas progresivas.
+### 📁 `pokeapi - vacia/` ← EMPIEZA AQUÍ
+**Migración de Vanilla JS a React** - Tu proyecto para completar.
 
 ```bash
-cd "pokeapi - vacio"
+cd "pokeapi - vacia"
 npm install
 npm run dev
 ```
 
-**Archivos de referencia:**
+**Documentación:**
 - `README.md` - Descripción general del proyecto
-- `LEARN_REACT.md` - Conceptos de React explicados
-- `API_GUIDE.md` - Cómo consumir PokeAPI
-- `TASKS.md` - Las 8 tareas con código de ejemplo
+- `GUIA_REACT.md` - Conceptos fundamentales de React
+- `MIGRATION_GUIDE.md` - Guía paso a paso de la migración
 
 **Tu trabajo:**
-- Completar componentes en `src/components/`
-- Crear hook en `src/hooks/usePokeAPI.js`
-- Llenar `src/App.jsx` con estado
-- Agregar estilos en `src/style.css`
+- Crear componentes React en `src/components/`
+- Implementar hook `src/hooks/usePokeAPI.js`
+- Desarrollar lógica en `src/App.jsx`
+- Adaptar estilos CSS existentes
+
+**Nivel:** Principiante a Intermedio
 
 ---
 
-### 📁 `pokeapi/` ← SOLUCIÓN COMPLETA
-**Proyecto React ya funcional** para comparar.
+### 📁 `pokeapi - original/` ← REFERENCIA
+**Proyecto con HTML y CSS Vanilla** - Solución original para comparar.
 
 ```bash
-cd pokeapi
-npm install
-npm run dev
+cd "pokeapi - original"
+# No requiere npm, abre index.html directamente
 ```
 
 **Úsalo para:**
-- Ver la solución completa cuando te atasques
-- Comparar tu código
-- Entender cómo funcionan los componentes
+- Entender la estructura HTML original
+- Ver cómo funciona el Vanilla JavaScript
+- Comparar con la versión React
 
 ---
 
-## 📚 Recomendación de Lectura
+### 📁 `api_pelis/` ← SOLUCIÓN COMPLETA REACT
+**Proyecto React Avanzado** - Ejemplo de una Pokédex React funcional.
 
-### Paso 1: Aprende React (30 min)
-1. Lee `pokeapi - vacio/LEARN_REACT.md` - conceptos clave
-2. Lee `pokeapi - vacio/API_GUIDE.md` - cómo usar PokeAPI
+```bash
+cd "api_pelis"
+npm install
+npm run dev
+```
 
-### Paso 2: Empieza a Codear (2-4 horas)
-1. Lee `pokeapi - vacio/TASKS.md` - cada tarea
-2. Completa las 8 tareas en orden
-3. **Copiar-pegar** el código de ejemplo en TASKS.md
-4. Ejecuta `npm run dev` y prueba cada cambio
+**Consulta para:**
+- Ver patrones React avanzados
+- Entender infinite scroll
+- Comparar con tu implementación
+
+---
+
+## 📚 Ruta de Aprendizaje Recomendada
+
+### Opción 1: Principiante (Empieza desde cero)
+
+1. **Aprende React** (45 minutos)
+   - Lee `pokeapi - vacia/GUIA_REACT.md`
+   - Entiende: JSX, componentes, props, state, hooks
+
+2. **Comprende la Migración** (15 minutos)
+   - Lee `pokeapi - vacia/MIGRATION_GUIDE.md`
+   - Revisa `pokeapi - original/` como referencia
+
+3. **Implementa** (2-4 horas)
+   - Sigue el MIGRATION_GUIDE.md paso a paso
+   - Crea componentes uno por uno
+   - Ejecuta `npm run dev` y prueba cada cambio
+
+4. **Consulta la Solución** (según sea necesario)
+   - Abre `api_pelis/` para ver patrones avanzados
+   - Compara tu código con la referencia
+
+### Opción 2: Intermedio (Reconocimiento rápido)
+
+1. Lee `pokeapi - vacia/README.md` (5 min)
+2. Revisa `pokeapi - original/` (10 min)
+3. Salta al MIGRATION_GUIDE.md y codea (2-3 horas)
+4. Consulta GUIA_REACT.md si algo no está claro
+
+### Opción 3: Experto (Mira y aprende)
+
+1. Abre `api_pelis/` (React funcional)
+2. Compara con `pokeapi - original/` (Vanilla JS)
+3. Implementa tu propia versión como ejercicio
 
 ### Paso 3: Valida (30 min)
 1. Abre `pokeapi/` para ver cómo se ve funcionando
